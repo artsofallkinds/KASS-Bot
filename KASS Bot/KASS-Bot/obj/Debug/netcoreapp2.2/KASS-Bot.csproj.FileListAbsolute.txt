@@ -1,0 +1,11 @@
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\bin\Debug\netcoreapp2.2\KASS-Bot.deps.json
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\bin\Debug\netcoreapp2.2\KASS-Bot.runtimeconfig.json
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\bin\Debug\netcoreapp2.2\KASS-Bot.runtimeconfig.dev.json
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\bin\Debug\netcoreapp2.2\KASS-Bot.dll
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\obj\Debug\netcoreapp2.2\KASS-Bot.csprojAssemblyReference.cache
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\obj\Debug\netcoreapp2.2\KASS-Bot.csproj.CoreCompileInputs.cache
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\obj\Debug\netcoreapp2.2\KASS-Bot.AssemblyInfoInputs.cache
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\obj\Debug\netcoreapp2.2\KASS-Bot.AssemblyInfo.cs
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\bin\Debug\netcoreapp2.2\KASS-Bot.pdb
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\obj\Debug\netcoreapp2.2\KASS-Bot.dll
+C:\Users\John\Documents\GitHub\KASS-Bot\KASS Bot\KASS-Bot\obj\Debug\netcoreapp2.2\KASS-Bot.pdb
