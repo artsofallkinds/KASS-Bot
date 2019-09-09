@@ -87,14 +87,32 @@ namespace KASS_Bot
                     Console.WriteLine($"{DateTime.Now} at Commands] Something went wrong with executing a command. Text: {Context.Message.Content} | Error: {Result.ErrorReason}");
                 }
             }
-            /*  Attempting to make the bot respond to all messages it's mentioned in that are not commands by adding the bird emoji reaction to said messages.
-            else if (Message.MentionedUsers.Equals(Client.CurrentUser))
+            // Checks to see if the message contains the bot's name
+            else if (FormatString(Message.ToString()).Contains("kassbot"))
             {
-                Console.WriteLine($"{DateTime.Now} at Commands] Non-command mention noticed. Text: {Context.Message.Content}");
-                await Message.AddReactionAsync(birdemoji);
+                Console.WriteLine($"{DateTime.Now} ] Name detected! | From: {Context.User} : {Context.Message.Content} ");      // Debugging purposes, remove for live
+                var Result = await Commands.ExecuteAsync(Context, "squack", null);
+                if (!Result.IsSuccess)
+                {
+                    Console.WriteLine($"{DateTime.Now} at Commands] Something went wrong with executing a command. Text: {Context.Message.Content} | Error: {Result.ErrorReason}");
+                }
             }
-            */
+            // Checks to see if the message is only "hello"
+            else if (FormatString(Message.ToString()).Equals("hello"))
+            {
+                Console.WriteLine($"{DateTime.Now} ] Hello detected! | From: {Context.User} : {Context.Message.Content} ");      // Debugging purposes, remove for live
+                var Result = await Commands.ExecuteAsync(Context, "hello", null);
+                if (!Result.IsSuccess)
+                {
+                    Console.WriteLine($"{DateTime.Now} at Commands] Something went wrong with executing a command. Text: {Context.Message.Content} | Error: {Result.ErrorReason}");
+                }
+            }
             else return;
+        }
+
+        public string FormatString(string x)
+        {
+            return x.ToLower().Trim().Replace(".", "").Replace("!", "").Replace("?", "");
         }
     }
 }
