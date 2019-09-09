@@ -62,4 +62,4 @@ typings/
 .next
 
 # File with token for security
-token.txt
+Token.txt
