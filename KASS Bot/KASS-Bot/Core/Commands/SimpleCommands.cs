@@ -13,20 +13,113 @@ namespace KASS_Bot.Core.Commands
         [Command("help"), Summary("Basic Help command.")]
         public async Task HelpCommand()
         {
-            await Context.Channel.SendMessageAsync("Hello, " + Context.User.Username + "! I am Kass and I am here to help however I can!\n" +
-                                                   "Commands:\n" +
-                                                   "\"Squack\" - I react to a message with a bird when I see my name in it. Can also be triggered manually with `k!squack`.\n" +
-                                                   "\"Hello\" - I respond to a message that has only \"Hello\" in it by greeting that user. Can also be triggered manually with `k!hello`.");
+            await Context.Channel.SendMessageAsync("Hello, " + Context.User.Username + "! I am KASSBot and I am here to help however I can!\n" +
+                                                   "```Automatic Commands:\n" +
+                                                   "\"Squack\" - I react to a message with a bird when I see my name in it. Can also be triggered manually with \"k!squack\".\n" +
+                                                   "\"Hello\" - I respond to a message that has only \"Hello\" in it by greeting that user. Can also be triggered manually with \"k!hello\".\n" +
+                                                   "\nManual Commands:\n" +
+                                                   "\"k!kennesaw\" - I give you the Kennesaw role, meaning to want to signify that the Kennesaw Campus is your main campus.\n" +
+                                                   "\"k!marrietta\" - I give you the Marietta role, meaning to want to signify that the Marietta Campus is your main campus." +
+                                                   "```");
         }
 
         // Responds when someone greets the bot
-        [Command("hello"), Summary("Hello World command")]
+        [Command("hello"), Summary("KASSBot detects when just the word hello is spoken, and responds to the user who sent it.")]
         public async Task HelloWorld()
         {
             await Context.Channel.SendMessageAsync("Hello, " + Context.User.Username + "!");
+
+            Console.WriteLine($"{DateTime.Now} at Commands] Hello given to {Context.User.Username}.");
+        }
+
+        // Reacts to a message by adding a bird emoji
+        [Command("squack"), Summary("KASSBot detects when its' name is spoken and reacts to the message with a bird emoji.")]
+        public async Task Squack()
+        {
+            var birdemoji = new Emoji("\uD83D\uDC26");                  // Can be replaced with a custom server emoji
+            await Context.Message.AddReactionAsync(birdemoji);          // Reacts to the identified message with an emoji reaction
+
+            Console.WriteLine($"{DateTime.Now} at Commands] Squack!");
+        }
+
+        // Gives someone the Kennesaw role
+        [Command("kennesaw"), Alias("giveKennesaw"), Summary("Gives the user the Kennesaw role")]
+        public async Task GiveKennesaw()
+        {
+            ulong roleid = 613097833507323915;
+
+            IUser user = Context.User;
+            IRole role = Context.Guild.GetRole(roleid);
+
+            IGuildUser guildUser = user as IGuildUser;
+            List<ulong> userRoles = new List<ulong>(guildUser.RoleIds);
+            bool hasRole = false;
+
+            foreach (ulong x in userRoles)
+            {
+                if (x == roleid)
+                {
+                    hasRole = true;
+                }
+            }
+
+            if (!hasRole)
+            {
+                await guildUser.AddRoleAsync(role);
+
+                var check = new Emoji("\u2705");                        
+                await Context.Message.AddReactionAsync(check);
+
+                Console.WriteLine($"{DateTime.Now} at Commands] {role.Name} given to {user.Username}.");
+            }
+            else
+            {
+                await Context.Channel.SendMessageAsync("" + user.Username + ", you already have that role!");
+
+                Console.WriteLine($"{DateTime.Now} at Commands] {user.Username} already has {role.Name}.");
+            }
+        }
+
+        // Gives someone the Marietta role
+        [Command("marietta"), Alias("giveMarietta"), Summary("Gives the user the Marietta role")]
+        public async Task GiveMarietta()
+        {
+            ulong roleid = 613097920777945091;
+
+            IUser user = Context.User;
+            IRole role = Context.Guild.GetRole(roleid);
+
+            IGuildUser guildUser = user as IGuildUser;
+            List<ulong> userRoles = new List<ulong>(guildUser.RoleIds);
+            bool hasRole = false;
+
+            foreach (ulong x in userRoles)
+            {
+                if (x == roleid)
+                {
+                    hasRole = true;
+                }
+            }
+
+            if (!hasRole)
+            {
+                await guildUser.AddRoleAsync(role);
+
+                var check = new Emoji("\u2705");
+                await Context.Message.AddReactionAsync(check);
+
+                Console.WriteLine($"{DateTime.Now} at Commands] {role.Name} given to {user.Username}.");
+            }
+            else
+            {
+                await Context.Channel.SendMessageAsync("" + user.Username + ", you already have that role!");
+
+                Console.WriteLine($"{DateTime.Now} at Commands] {user.Username} already has {role.Name}.");
+            }
         }
 
         // Test for the Embed Builder
+        /*
         [Command("embed"), Summary("Embed test command")]
         public async Task Embed([Remainder]string Input = "None")
         {
@@ -41,14 +134,7 @@ namespace KASS_Bot.Core.Commands
             await Context.Channel.SendMessageAsync("", false, Embed.Build());
         }
 
-        // Reacts to a message by adding a bird emoji
-        [Command("squack"), Summary("Mari-Bot detects when its' name is spoken and does something silly.")]
-        public async Task Squack()
-        {
-            var birdemoji = new Emoji("\uD83D\uDC26");                  // Can be replaced with a custom server emoji
-            await Context.Message.AddReactionAsync(birdemoji);          // Reacts to the identified message with an emoji reaction
-        }
-
+        */
         /* Template for making new commands: 
         [Command(""), Alias(""), Summary("")]
         public async Task Template()
@@ -56,5 +142,6 @@ namespace KASS_Bot.Core.Commands
             // Code goes here
         }
         */
+
     }
 }
