@@ -14,12 +14,13 @@ namespace KASS_Bot.Core.Commands
         public async Task HelpCommand()
         {
             await Context.Channel.SendMessageAsync("Hello, " + Context.User.Username + "! I am KASSBot and I am here to help however I can!\n" +
-                                                   "```Automatic Commands:\n" +
-                                                   "\"Squack\" - I react to a message with a bird when I see my name in it. Can also be triggered manually with \"k!squack\".\n" +
-                                                   "\"Hello\" - I respond to a message that has only \"Hello\" in it by greeting that user. Can also be triggered manually with \"k!hello\".\n" +
+                                                   "```ml\n" +
+                                                   "Automatic Commands:\n" +
+                                                   "\'Squack\' = - i React to a message if i see my Name. can also be triggered manually using \"k!squack\".\n" +
+                                                   "\'Hello\' - i Respond to a message that has only Hello by greeting that user. can also be triggered manually using \"k!hello\".\n" +
                                                    "\nManual Commands:\n" +
-                                                   "\"k!kennesaw\" - I give you the Kennesaw role, meaning to want to signify that the Kennesaw Campus is your main campus.\n" +
-                                                   "\"k!marrietta\" - I give you the Marietta role, meaning to want to signify that the Marietta Campus is your main campus." +
+                                                   "\"k!kennesaw\" - i give you the Kennesaw role, stating that Kennesaw Campus is your main campus.\n" +
+                                                   "\"k!marrietta\" - i give you the Marietta role, stating that Marietta Campus is your main campus." +
                                                    "```");
         }
 
